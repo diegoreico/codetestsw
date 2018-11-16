@@ -2,30 +2,31 @@ package diegoreico
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.server.Directives._
+
 import akka.stream.ActorMaterializer
+import com.typesafe.config.{Config, ConfigFactory}
+
+import scala.concurrent.ExecutionContextExecutor
 import scala.io.StdIn
 
 object WebServer {
 
-  val RootEndpoint = path("/") {
-    get {
-      complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Hello to the Stratio Wars Code Test</h1>"))
-    }
-  }
+  val Configuration: Config = ConfigFactory.load("application.conf")
 
   def main(args: Array[String]) {
 
-    implicit val system = ActorSystem("my-system")
-    implicit val materializer = ActorMaterializer()
+    implicit val system: ActorSystem = ActorSystem("my-system")
+    implicit val materializer: ActorMaterializer = ActorMaterializer()
     // needed for the future flatMap/onComplete in the end
-    implicit val executionContext = system.dispatcher
+    implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
+    val host = Configuration.getString("host")
+    val port = Configuration.getInt("port")
+    val version = Configuration.getString("api.version")
 
-    val bindingFuture = Http().bindAndHandle(RootEndpoint, "localhost", 8080)
+    val bindingFuture = Http().bindAndHandle(Endpoints.routes, host, port)
 
-    println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
+    println(s"Server online at http://$host:$port/$version\nPress RETURN to stop...")
     StdIn.readLine() // let it run until user presses return
     bindingFuture
       .flatMap(_.unbind()) // trigger unbinding from the port
