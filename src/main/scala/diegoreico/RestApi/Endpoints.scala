@@ -6,12 +6,10 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 
 
-class Endpoints(presenter : Presenter) {
-
-  val Configuration: Config = ConfigFactory.load("application.conf")
+class Endpoints(configuration :Config, presenter : Presenter) {
 
   val rootRooter: Route =
-    path(Configuration.getString("api.version")) {
+    path(configuration.getString("api.version")) {
       get {
         pathEndOrSingleSlash {
           complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Hello to the Stratio Wars Code Test</h1>"))
@@ -20,8 +18,8 @@ class Endpoints(presenter : Presenter) {
     }
 
   val decodeRouter: Route =
-    pathPrefix(Configuration.getString("api.version")) {
-      path(Configuration.getString("api.endpoints.decode")) {
+    pathPrefix(configuration.getString("api.version")) {
+      path(configuration.getString("api.endpoints.decode")) {
         get {
           parameters('values) { values =>
             val results = presenter.decodeCoordinates(values)

@@ -24,7 +24,7 @@ class HexadecimalParserTest extends  WordSpec{
       assert(value == expected)
     }
 
-    "Correctly obtain character hexadecimal value for a upper case letter" in {
+    "Correctly obtain character hexadecimal value for an upper case letter" in {
       val char = 'F'
 
       val value = HexadecimalParser.parseChar(char)

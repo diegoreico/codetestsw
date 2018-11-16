@@ -8,23 +8,21 @@ import com.typesafe.config.{Config, ConfigFactory}
 import scala.concurrent.ExecutionContextExecutor
 import scala.io.StdIn
 
-object WebServer {
-
-  val Configuration: Config = ConfigFactory.load("application.conf")
-
-  def main(args: Array[String]) {
+object WebServer extends App {
+  override def main(args: Array[String]): Unit = {
+    val configuration: Config = ConfigFactory.load("application.conf")
 
     implicit val system: ActorSystem = ActorSystem("my-system")
     implicit val materializer: ActorMaterializer = ActorMaterializer()
     // needed for the future flatMap/onComplete in the end
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
-    val host = Configuration.getString("host")
-    val port = Configuration.getInt("port")
-    val version = Configuration.getString("api.version")
+    val host = configuration.getString("host")
+    val port = configuration.getInt("port")
+    val version = configuration.getString("api.version")
 
     val presenter = new DefaultPresenter()
-    val endpoints = new Endpoints(presenter)
+    val endpoints = new Endpoints(configuration, presenter)
 
     val bindingFuture = Http().bindAndHandle(endpoints.routes, host, port)
 

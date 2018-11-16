@@ -69,8 +69,7 @@ Solution provided for input
 
 is invalid
 
-
-# About the soltuion
+# About the solution
 
 The solution made is developed using the following technologies:
 
@@ -80,7 +79,7 @@ The solution made is developed using the following technologies:
 - Scalatest
 - Scalactic
 
-To check the solution you can run the tests bundled with the solutions. The packages **ValidationTest** and **Blackbox** runs the provided example using the Rest API and using just Scala Code respectively.
+To check the solution you can run the tests bundled with the solutions. The packages **ValidationTest** and **Blackbox** runs the provided example using the Rest API and just using Scala code respectively.
 
 ## Rest API Format
 
@@ -91,19 +90,28 @@ The program expose the following endpoints:
     -  **GET**: You must made a `GET` request do this endpoint using the field values, in which you **MUST** provide the coordinates that you want to decode separated by commas.The output will be a JSON array wih the decoded solutions. Examples:
     ```
     Petition: http://localhost:3000/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9
-    Response:
-    http://localhost:3000/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9,2ab81c9b-1719-400c-a676-bdba976150eb
-    Petition:
-    Response:
+    Response: [73-15-46-dc9876321]
+    
+    Petition: http://localhost:3000/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9,2ab81c9b-1719-400c-a676-bdba976150eb
+    Response: [73-15-46-dc9876321,64-9-35-edba976510]
     ```
     
-## Running the example
+## How to run the tests
+    
+To run the all the tests inside the project just use
+
+    mvn test
+    
+## Running the program
 
 If you want to run the example you must run the class `src/main/scala/diegoreico/RestApi/WebServer.scala`. You can do that using maven
 
-    mvn scala:run
+    mvn scala:run -DmainClass=diegoreico.RestApi.WebServer
     
 You should see the following terminal output:
+
+    Server online at http://127.0.0.1:3000/v1
+    Press RETURN to stop...
 
 
 

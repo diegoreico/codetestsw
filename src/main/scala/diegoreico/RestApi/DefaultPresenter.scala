@@ -4,7 +4,7 @@ import diegoreico.Decrypt.{Decoder, EncryptedCoordinates}
 
 class DefaultPresenter extends Presenter {
 
-  private def formatCoordinatesResult(coordinates :Array[String])= {
+  private def formatCoordinatesResultAsJSONArray(coordinates :Array[String]):String = {
     val formated = coordinates
     .reduce((r1,r2) => r1 + ',' + r2 )
 
@@ -16,8 +16,7 @@ class DefaultPresenter extends Presenter {
       .map(EncryptedCoordinates(_))
       .map(Decoder.decode)
 
-    formatCoordinatesResult(result)
-
+    formatCoordinatesResultAsJSONArray(result)
   }
 
 }

@@ -7,7 +7,7 @@ import org.scalatest.WordSpec
 class EncryptedCoordinatesTests extends WordSpec {
 
   "The EncryptedCoordinates" should {
-    "be correctly created from a string" in {
+    "be correctly created from a valid string" in {
       val coordinatesString = "2952410b-0a94-446b-8bcb-448dc6e30b08"
       val encryptedCoordinates = EncryptedCoordinates(coordinatesString)
 

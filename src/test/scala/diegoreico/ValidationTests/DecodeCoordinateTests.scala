@@ -5,7 +5,6 @@ import org.scalatest._
 
 class DecodeCoordinateTests extends WordSpec {
 
-
   "The Decoder" should {
 
     "Correctly decode encrypted coordinates" in {

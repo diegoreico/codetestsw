@@ -2,13 +2,15 @@ package diegoreico.blackbox
 
 import org.scalatest.{Matchers, WordSpec}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
+import com.typesafe.config.{Config, ConfigFactory}
 import diegoreico.RestApi.{DefaultPresenter, Endpoints}
 
 
 class ServiceTest extends WordSpec with Matchers with ScalatestRouteTest {
 
+  val configuration: Config = ConfigFactory.load("application.conf")
   val presenter = new DefaultPresenter
-  val endpoints = new Endpoints(presenter)
+  val endpoints = new Endpoints(configuration, presenter)
 
   "The service" should {
     "return the decoded string to single provided encrypted coordinates" in {
