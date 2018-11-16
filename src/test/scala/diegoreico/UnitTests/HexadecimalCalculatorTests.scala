@@ -29,5 +29,17 @@ class HexadecimalCalculatorTests extends WordSpec{
 
     }
 
+    "obtain the sum of values for the max decimal value between 2 characters at the same position inside 2 strings " +
+      "containung hexadecimal characters"in {
+      val string = "400c"
+      val string2 = "a676"
+
+      val result = calculator.obtainSumOfMaxValuesAtEachPosition(string, string2)
+      val expected = 35
+
+      assert(result == expected)
+
+    }
+
   }
 }
