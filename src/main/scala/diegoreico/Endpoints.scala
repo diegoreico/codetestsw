@@ -27,7 +27,7 @@ object Endpoints {
               .map(EncryptedCoordinates(_))
               .map(Decoder.decode)
                 .reduce((r1,r2) => r1 + ',' + r2 )
-            complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, s"${results}"))
+            complete(HttpEntity(ContentTypes.`application/json`, s"[${results}]"))
           }
 
         }
