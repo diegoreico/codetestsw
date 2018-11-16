@@ -4,9 +4,9 @@ import com.typesafe.config.{Config, ConfigFactory}
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import diegoreico.Decrypt.{Decoder, EncryptedCoordinates}
 
-object Endpoints {
+
+class Endpoints(presenter : Presenter) {
 
   val Configuration: Config = ConfigFactory.load("application.conf")
 
@@ -24,11 +24,8 @@ object Endpoints {
       path(Configuration.getString("api.endpoints.decode")) {
         get {
           parameters('values) { values =>
-            val results = values.split(",")
-              .map(EncryptedCoordinates(_))
-              .map(Decoder.decode)
-                .reduce((r1,r2) => r1 + ',' + r2 )
-            complete(HttpEntity(ContentTypes.`application/json`, s"[${results}]"))
+            val results = presenter.decodeCoordinates(values)
+            complete(HttpEntity(ContentTypes.`application/json`, results))
           }
 
         }

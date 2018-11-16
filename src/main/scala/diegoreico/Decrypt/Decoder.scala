@@ -32,11 +32,11 @@ object Decoder {
     sortedChars
       .foldLeft(""+sortedChars.head)((string, char)  => if (string.last == char) string else string + char)
   }
+
   def decode(coordinates : EncryptedCoordinates): String ={
     sumEachCharValue(coordinates.galaxy) + "-" +
     obtainMaxDecimalValueInsideHexString(coordinates.quadrant)  + "-" +
-    obtainSumOfMaxValuesAtEachPosition(coordinates.starsystem1,coordinates.starsystem2)  + "-" +
+    obtainSumOfMaxValuesAtEachPosition(coordinates.starSystem1,coordinates.starSystem2)  + "-" +
     orderAndRemoveDuplicated(coordinates.planet)
-
   }
 }

@@ -32,8 +32,8 @@ object EncryptedCoordinates{
   }
 }
 
-class EncryptedCoordinates(val galaxy :String,val quadrant :String,
-                           val starsystem1 :String, val starsystem2 :String, val planet :String) {
+class EncryptedCoordinates(val galaxy :String, val quadrant :String,
+                           val starSystem1 :String, val starSystem2 :String, val planet :String) {
 
-  override def toString: String = s"$galaxy-$quadrant-$starsystem1-$starsystem2-$planet"
+  override def toString: String = s"$galaxy-$quadrant-$starSystem1-$starSystem2-$planet"
 }

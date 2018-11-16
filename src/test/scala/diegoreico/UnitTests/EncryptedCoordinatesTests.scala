@@ -13,8 +13,8 @@ class EncryptedCoordinatesTests extends WordSpec {
 
       assert(encryptedCoordinates.galaxy == "2952410b")
       assert(encryptedCoordinates.quadrant == "0a94")
-      assert(encryptedCoordinates.starsystem1 == "446b")
-      assert(encryptedCoordinates.starsystem2 == "8bcb")
+      assert(encryptedCoordinates.starSystem1 == "446b")
+      assert(encryptedCoordinates.starSystem2 == "8bcb")
       assert(encryptedCoordinates.planet == "448dc6e30b08")
     }
 

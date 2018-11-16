@@ -23,7 +23,10 @@ object WebServer {
     val port = Configuration.getInt("port")
     val version = Configuration.getString("api.version")
 
-    val bindingFuture = Http().bindAndHandle(Endpoints.routes, host, port)
+    val presenter = new DefaultPresenter()
+    val endpoints = new Endpoints(presenter)
+
+    val bindingFuture = Http().bindAndHandle(endpoints.routes, host, port)
 
     println(s"Server online at http://$host:$port/$version\nPress RETURN to stop...")
     StdIn.readLine() // let it run until user presses return
