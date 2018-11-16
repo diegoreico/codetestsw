@@ -19,5 +19,15 @@ class HexadecimalCalculatorTests extends WordSpec{
 
     }
 
+    "obtain the biggest value inside a string formed by hexadecimal characters" in {
+      val string = "ef51"
+
+      val result = calculator.obtainMaxDecimalValueInsideHexString(string)
+      val expected = 15
+
+      assert(result == expected)
+
+    }
+
   }
 }
