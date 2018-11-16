@@ -10,8 +10,8 @@ class ServiceTest extends WordSpec with Matchers with ScalatestRouteTest {
   "The service" should {
     "return the decode string to a provided encrypted coordinates" in {
       // tests:
-      Get("/v1/decode?values=2952410b-0a94-446b-8bcb-448dc6e30b08") ~> Endpoints.routes ~> check {
-        responseAs[String] shouldEqual "22-10-42-edcb86430"
+      Get("/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9") ~> Endpoints.routes ~> check {
+        responseAs[String] shouldEqual "73-15-46-dc9876321"
       }
     }
   }

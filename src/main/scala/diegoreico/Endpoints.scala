@@ -3,10 +3,12 @@ package diegoreico
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
+import diegoreico.Decoder
 
 import diegoreico.WebServer.Configuration
 
 object Endpoints {
+
   val rootRooter: Route =
     path(Configuration.getString("api.version")) {
       get {
@@ -21,7 +23,11 @@ object Endpoints {
       path(Configuration.getString("api.endpoints.decode")) {
         get {
           parameters('values) { values =>
-            complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, s"$values"))
+            val results = values.split(",")
+              .map(EncryptedCoordinates(_))
+              .map(Decoder.decode)
+                .reduce((r1,r2) => r1 + ',' + r2 )
+            complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, s"${results}"))
           }
 
         }
