@@ -1,8 +1,7 @@
-package diegoreico
+package diegoreico.RestApi
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-
 import akka.stream.ActorMaterializer
 import com.typesafe.config.{Config, ConfigFactory}
 

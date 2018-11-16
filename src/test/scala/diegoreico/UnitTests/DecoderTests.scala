@@ -1,6 +1,6 @@
 package diegoreico.UnitTests
 
-import diegoreico.{EncryptedCoordinates, Decoder}
+import diegoreico.Decrypt.{Decoder, EncryptedCoordinates}
 import org.scalatest.WordSpec
 
 class DecoderTests extends WordSpec{

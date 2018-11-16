@@ -1,4 +1,4 @@
-package diegoreico
+package diegoreico.Decrypt
 
 import diegoreico.Exceptions.BadFormatException
 
@@ -34,8 +34,6 @@ object EncryptedCoordinates{
 
 class EncryptedCoordinates(val galaxy :String,val quadrant :String,
                            val starsystem1 :String, val starsystem2 :String, val planet :String) {
-
-  import EncryptedCoordinates._
 
   override def toString: String = s"$galaxy-$quadrant-$starsystem1-$starsystem2-$planet"
 }

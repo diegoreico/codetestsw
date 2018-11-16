@@ -1,6 +1,6 @@
 package diegoreico.UnitTests
 
-import diegoreico.HexadecimalParser
+import diegoreico.Decrypt.HexadecimalParser
 import org.scalatest.WordSpec
 
 class HexadecimalParserTest extends  WordSpec{

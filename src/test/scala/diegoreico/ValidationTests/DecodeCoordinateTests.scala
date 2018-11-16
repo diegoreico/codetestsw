@@ -1,6 +1,6 @@
 package diegoreico.ValidationTests
 
-import diegoreico.{Decoder, EncryptedCoordinates}
+import diegoreico.Decrypt.{Decoder, EncryptedCoordinates}
 import org.scalatest._
 
 class DecodeCoordinateTests extends WordSpec {

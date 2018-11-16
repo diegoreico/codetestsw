@@ -1,8 +1,8 @@
 package diegoreico.blackbox
 
-import diegoreico.Endpoints
 import org.scalatest.{Matchers, WordSpec}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
+import diegoreico.RestApi.Endpoints
 
 
 class ServiceTest extends WordSpec with Matchers with ScalatestRouteTest {

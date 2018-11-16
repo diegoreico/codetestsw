@@ -1,4 +1,4 @@
-package diegoreico
+package diegoreico.Decrypt
 
 object HexadecimalParser {
   def parseChar(character :Char) : Int ={

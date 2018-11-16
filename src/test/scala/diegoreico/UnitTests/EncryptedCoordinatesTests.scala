@@ -1,6 +1,6 @@
 package diegoreico.UnitTests
 
-import diegoreico.EncryptedCoordinates
+import diegoreico.Decrypt.EncryptedCoordinates
 import diegoreico.Exceptions.BadFormatException
 import org.scalatest.WordSpec
 

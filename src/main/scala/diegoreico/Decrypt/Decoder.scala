@@ -1,4 +1,4 @@
-package diegoreico
+package diegoreico.Decrypt
 
 object Decoder {
     def sumEachCharValue(string :String) = {

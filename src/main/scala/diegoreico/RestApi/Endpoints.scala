@@ -1,13 +1,14 @@
-package diegoreico
+package diegoreico.RestApi
 
+import com.typesafe.config.{Config, ConfigFactory}
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import diegoreico.Decoder
-
-import diegoreico.WebServer.Configuration
+import diegoreico.Decrypt.{Decoder, EncryptedCoordinates}
 
 object Endpoints {
+
+  val Configuration: Config = ConfigFactory.load("application.conf")
 
   val rootRooter: Route =
     path(Configuration.getString("api.version")) {
