@@ -68,3 +68,44 @@ Solution provided for input
     22-10-42-edcb86430
 
 is invalid
+
+
+# About the soltuion
+
+The solution made is developed using the following technologies:
+
+- Scala
+- Mavevn
+- Akka Http
+- Scalatest
+- Scalactic
+
+To check the solution you can run the tests bundled with the solutions. The packages **ValidationTest** and **Blackbox** runs the provided example using the Rest API and using just Scala Code respectively.
+
+## Rest API Format
+
+The program expose the following endpoints:
+
+- [http://localhost:3000/v1/](http://localhost:3000/v1/): to check if you can reach the program API
+- [http://localhost:3000/v1/decode](http://localhost:3000/v1/decode): to decode encrypted coordinates
+    -  **GET**: You must made a `GET` request do this endpoint using the field values, in which you **MUST** provide the coordinates that you want to decode separated by commas.The output will be a JSON array wih the decoded solutions. Examples:
+    ```
+    Petition: http://localhost:3000/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9
+    Response:
+    http://localhost:3000/v1/decode?values=6f9c15fa-ef51-4415-afab-36218d76c2d9,2ab81c9b-1719-400c-a676-bdba976150eb
+    Petition:
+    Response:
+    ```
+    
+## Running the example
+
+If you want to run the example you must run the class `src/main/scala/diegoreico/RestApi/WebServer.scala`. You can do that using maven
+
+    mvn scala:run
+    
+You should see the following terminal output:
+
+
+
+
+
