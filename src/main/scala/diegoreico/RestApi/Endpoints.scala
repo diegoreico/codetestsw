@@ -12,7 +12,7 @@ class Endpoints(configuration :Config, presenter : Presenter) {
     path(configuration.getString("api.version")) {
       get {
         pathEndOrSingleSlash {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Hello to the Stratio Wars Code Test</h1>"))
+          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Hello from the Code Test</h1>"))
         }
       }
     }
