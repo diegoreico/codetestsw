@@ -2,7 +2,7 @@
 
 ## PROBLEM
 We need help, we have intercepted a list of encrypted coordinates from the death star, in
-order to restablish the peace in the interplanetary system Stratio needs you to find out the targets
+order to restablish the peace in the interplanetary system needs you to find out the targets
 positions.
 
 Our engineers have discovered the decrypt algorithm so we need you to:
